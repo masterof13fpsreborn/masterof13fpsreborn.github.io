@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verfluchte, gehackte Seite</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            overflow: hidden;
+            font-size: 20px;
+            line-height: 1.5;
+            white-space: nowrap;
+            animation: glitch 2s infinite linear;
+            position: relative;
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translateX(0);
+                text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+            }
+            25% {
+                transform: translateX(-10px);
+                text-shadow: 2px 2px 10px #ff0000, -2px -2px 10px #ff0000;
+            }
+            50% {
+                transform: translateX(10px);
+                text-shadow: -2px 2px 5px #ff00ff, 2px -2px 5px #00ffff;
+            }
+            75% {
+                transform: translateX(-5px);
+                text-shadow: 3px 3px 15px #ff00ff, -3px -3px 15px #ffff00;
+            }
+            100% {
+                transform: translateX(0);
+                text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            }
+        }
+
+        h1 {
+            font-size: 80px;
+            text-transform: uppercase;
+            margin-top: 100px;
+            animation: flicker 1.5s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            25% { opacity: 0.3; }
+            50% { opacity: 1; }
+            75% { opacity: 0.2; }
+            100% { opacity: 1; }
+        }
+
+        .random-text {
+            font-size: 15px;
+            animation: scroll 5s linear infinite;
+            position: absolute;
+            top: 120px;
+            left: -100%;
+        }
+
+        @keyframes scroll {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .random-number {
+            font-size: 50px;
+            color: #ff0000;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0% { visibility: visible; }
+            50% { visibility: hidden; }
+            100% { visibility: visible; }
+        }
+
+        .matrix-effect {
+            color: #00ff00;
+            font-size: 30px;
+            position: absolute;
+            top: 200px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: matrix 1.5s infinite alternate;
+        }
+
+        @keyframes matrix {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .hacker-text {
+            font-size: 12px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #00ff00;
+            opacity: 0.7;
+        }
+
+        .background-code {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #00ff00;
+            z-index: -1;
+            animation: code-flicker 0.5s infinite;
+        }
+
+        @keyframes code-flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Matrix rain effect */
+        .matrix-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .matrix-background .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .matrix-background .rain span {
+            position: absolute;
+            bottom: -100%; /* Start position of the rain */
+            color: #00ff00;
+            font-size: 20px;
+            animation: fall 10s infinite;
+            animation-timing-function: linear;
+            white-space: nowrap;
+        }
+
+        /* Animation to make the columns of characters fall down */
+        @keyframes fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Generate multiple columns */
+        .column {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            animation: rainAnimation 1s infinite;
+        }
+
+        /* Animation for random dropping characters in columns */
+        @keyframes rainAnimation {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix background (vertical rain effect) -->
+    <div class="matrix-background">
+        <div class="rain">
+            <!-- Columns of characters (simulate the matrix rain) -->
+            <div class="column" style="left: 5%;"> 
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <!-- You can add more characters here -->
+            </div>
+
+            <div class="column" style="left: 15%;"> 
+                <span>1</span>
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <span>0</span>
+                <span>0</span>
+                <span>1</span>
+                <span>0</span>
+                <!-- You can add more characters here -->
+            </div>
+
+            <div class="column" style="left: 25%;"> 
+                <span>1</span>
+                <span>0</span>
+                <span>0</span>
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <span>1</span>
+                <span>0</span>
+                <!-- You can add more characters here -->
+            </div>
+
+            <div class="column" style="left: 35%;"> 
+                <span>1</span>
+                <span>1</span>
+                <span>0</span>
+                <span>0</span>
+                <span>1</span>
+                <span>1</span>
+                <span>0</span>
+                <span>1</span>
+                <!-- You can add more characters here -->
+            </div>
+
+            <!-- Add more columns as needed for the effect -->
+        </div>
+    </div>
+
+    <div class="background-code">
+        <p>01101001 00101100 01100001 01101101 00100000 01101001 00100000 01101000 01100001 01110100</p>
+        <p>ERROR: SYSTEM OVERLOAD, REBOOT IMMINENT</p>
+        <p>ACCESS DENIED... TRIES: 0</p>
+        <p>404 NOT FOUND</p>
+        <p>W0RLD D3STRUCTION INITIATED... </p>
+        <p>ACTIVATE CHAOS MODE</p>
+    </div>
+
+    <h1>YOU ARE BEING WATCHED</h1>
+    <p class="random-text">ERROR - File not found... Reconfiguring network parameters...</p>
+    <p class="random-text">Connecting to the dark web... Please wait...</p>
+    <p class="random-text">Random access violation detected... SYSTEM LOGS UNAVAILABLE</p>
+
+    <p class="random-number">404</p>
+
+    <div class="matrix-effect">
+        <p>WELCOME TO THE VOID</p>
+        <p>>> SYSTEM CORRUPTED <<</p>
+    </div>
+
+    <div class="hacker-text">
+        <p>Injecting payload into server... Waiting for response... Connecting...</p>
+    </div>
+
+    <h2>IT WAS NICE TO MEET YOU, BUT YOU WILL NEVER ESCAPE</h2>
+</body>
+</html>

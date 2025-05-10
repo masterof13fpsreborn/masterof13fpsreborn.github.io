@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>lmao</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      animation: bgBlink 0.3s infinite alternate;
+      font-family: sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 5rem;
+      margin: 0;
+      color: #fff;
+      text-shadow: 0 0 10px red, 0 0 20px yellow, 0 0 40px lime, 0 0 60px cyan;
+      animation: rainbowFlash 0.2s infinite, rotateSlight 0.3s infinite alternate;
+      transform-origin: center;
+    }
+
+    p {
+      font-size: 1.8rem;
+      color: #ff00ff;
+      text-shadow: 0 0 10px cyan, 0 0 20px red;
+      animation: flickerText 0.1s infinite alternate;
+      margin-top: 20px;
+    }
+
+    iframe {
+      margin-top: 30px;
+      border: 6px solid magenta;
+      box-shadow: 0 0 20px red, 0 0 40px lime, 0 0 60px blue;
+      animation: spinVideo 6s linear infinite, colorBorder 0.3s infinite;
+    }
+
+    @keyframes bgBlink {
+      0% { background-color: black; }
+      100% { background-color: #111; }
+    }
+
+    @keyframes rainbowFlash {
+      0%   { color: red; }
+      25%  { color: yellow; }
+      50%  { color: lime; }
+      75%  { color: cyan; }
+      100% { color: magenta; }
+    }
+
+    @keyframes flickerText {
+      0%   { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    @keyframes rotateSlight {
+      0% { transform: rotate(-3deg); }
+      100% { transform: rotate(3deg); }
+    }
+
+    @keyframes spinVideo {
+      0%   { transform: rotate(0deg) scale(1); }
+      50%  { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes colorBorder {
+      0%   { border-color: red; }
+      25%  { border-color: yellow; }
+      50%  { border-color: lime; }
+      75%  { border-color: cyan; }
+      100% { border-color: magenta; }
+    }
+
+    body {
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>:3 oh ok so youre wasting your time and now youre here</h1>
+
+  <iframe width="560" height="315"
+    src="https://www.youtube.com/embed/a-sjXlpxDv0?autoplay=1&loop=1"
+    title="cursed video"
+    frameborder="0"
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+  </iframe>
+  <p>Look at this cute Video</p>
+
+</body>
+</html>

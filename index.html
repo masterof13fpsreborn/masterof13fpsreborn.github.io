@@ -1,3 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Server Offline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      text-align: center;
+      margin: 100px auto 0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+
+    .divider {
+      margin: 2rem 0;
+      border-top: 1px solid #333;
+    }
+
+    .wrapper {
+      position: absolute;
+      transition: left 2.5s ease-in-out, top 2.5s ease-in-out;
+    }
+
+    .floating-img {
+      width: 100px;
+      height: auto;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px white);
+      animation: colorFade 5s infinite, scalePulse 2.5s ease-in-out infinite;
+      display: block;
+    }
+
+    #logo {
+      position: absolute;
+    }
+
+    @keyframes colorFade {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      50% {
+        filter: hue-rotate(180deg);
+      }
+
+      100% {
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    @keyframes scalePulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Server Offline</h1>
+    <p>Hey, mein Provider hat den Server am 05.05. gelöscht ¯\_(ツ)_/¯</p>
+    <p>Ich bin mir sicher, dass jemand anderes die Lücke füllen wird.</p>
+    <p>Danke für die schöne Zeit mit euch ^^</p>
+    <p>Vielleicht sieht man sich in der Zukunft wieder :3</p>
+
+    <div class="divider"></div>
+
+    <p>Hey, my provider deleted the server on May 5th ¯\_(ツ)_/¯</p>
+    <p>I'm sure someone else will fill the gap.</p>
+    <p>Thanks for the great time with you all ^^</p>
+    <p>Maybe we'll see each other again in the future :3</p>
+  </div>
+
+  <!-- Wrappers with images -->
+  <div class="wrapper" id="wrapper-bigrat">
+    <img class="floating-img" src="bigrat.jpg" alt="Big Rat">
+  </div>
+
+  <div class="wrapper" id="wrapper-g0mme">
+    <img class="floating-img" src="g0mme.png" alt="Gomme">
+  </div>
+
+  <img src="logo.png" id="logo">
+
+  <script>
+    const wrappers = [
+      { id: 'wrapper-bigrat', link: 'lmao.html' },
+      { id: 'wrapper-g0mme', link: 'lmao2.html' }
+    ];
+
+    function moveWrapperRandomly(wrapper) {
+      const maxX = window.innerWidth - 100;
+      const maxY = window.innerHeight - 100;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      wrapper.style.left = `${x}px`;
+      wrapper.style.top = `${y}px`;
+    }
+
+    function applyRandomSpin(wrapper) {
+      const duration = (Math.random() * 5 + 3).toFixed(1); // 3s to 8s
+      const animationName = `spin-${Math.random().toString(36).substr(2, 5)}`;
+      const keyframes = `
+        @keyframes ${animationName} {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `;
+      const style = document.createElement('style');
+      style.innerHTML = keyframes;
+      document.head.appendChild(style);
+      wrapper.style.animation = `${animationName} ${duration}s linear infinite`;
+    }
+
+    wrappers.forEach(({ id, link }) => {
+      const wrapper = document.getElementById(id);
+      const img = wrapper.querySelector('img');
+
+      moveWrapperRandomly(wrapper);
+      applyRandomSpin(wrapper);
+      setInterval(() => moveWrapperRandomly(wrapper), 3000);
+      setInterval(() => applyRandomSpin(wrapper), 10000);
+
+      img.addEventListener('click', () => {
+        window.location.href = link;
+      });
+    });
+
+    var direction = {
+      h: 1,
+      v: 1
+    }
+
+    var logo = document.getElementById("logo")
+    var imgWidth = 0
+    var currentHue = 0
+    var imgHeight = 0
+    logo.onload = () => {
+      imgWidth = parseInt(logo.width)
+      imgHeight = parseInt(logo.height)
+    }
+
+    setInterval(() => {
+      var left = GetNumberFromPx(logo.style.left)
+      var top = GetNumberFromPx(logo.style.top)
+      var collided = false
+      if (left < 0) { direction.h = 1; collided = true }
+      else if (left + imgWidth >= document.body.clientWidth) { direction.h = -1; collided = true }
+      if (top < 0) { direction.v = 1; collided = true }
+      else if (top + imgHeight > document.body.clientHeight) { direction.v = -1; collided = true }
+      if (collided) {
+        currentHue += 100
+        currentHue = currentHue % 360
+        logo.style.filter = "hue-rotate(" + currentHue + "deg)"
+      }
+      logo.style.left = (left + 2.0 * direction.h) + "px"
+      logo.style.top = (top + 2.0 * direction.v) + "px"
+    }, 10)
+
+    function GetNumberFromPx(input) {
+      return parseFloat(input.replace("px", "")) || 0
+    }
+  </script>
+
+</body>
+
 </html>
